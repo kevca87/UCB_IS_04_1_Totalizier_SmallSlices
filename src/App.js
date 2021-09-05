@@ -8,6 +8,7 @@ const price_output = document.querySelector("#show-price");
 const total_price_output = document.querySelector("#show-total-price");
 const total_taxes_price_output = document.querySelector("#show-total-taxes-price");
 const state_tax_output = document.querySelector("#show-state");
+const discount_percentage_output = document.querySelector("#show-discount");
 
 var taxes = {
     "UT":0.0665,
@@ -17,6 +18,38 @@ var taxes = {
     "CA":0.0825
 }
 
+var discount_groups = {
+    1000:0.03,
+    3000:0.05,
+    7000:0.07,
+    10000:0.10,
+    30000:0.15
+}
+
+function calculate_discount(total){
+    switch (true) {
+        case (total >= 30000 ):
+            discount = total * discount_groups[30000]
+            break;
+        case (total >= 10000 ):
+            discount = total * discount_groups[10000]
+            break;
+        case (total >= 7000 ):
+            discount = total * discount_groups[7000]
+            break;
+        case (total >= 3000 ):
+            discount = total * discount_groups[3000]
+            break;
+        case (total >= 1000 ):
+            discount = total * 0.03
+            break;
+        default:
+            discount = 0
+            break;
+    }
+    return discount
+}
+
 form.addEventListener("submit",event=>{
     event.preventDefault()
     quantity_output.innerHTML = "Quantity: " + quantity.value
@@ -24,7 +57,9 @@ form.addEventListener("submit",event=>{
     let tax = taxes[state.value]
     let total_price =  price.value * quantity.value 
     let total_taxes_price =  total_price * (1+tax)
+    let discount = calculate_discount(total_taxes_price)
     total_price_output.innerHTML = "Total: " + total_price
-    state_tax_output.innerHTML = state.value + " tax: "+tax  
+    state_tax_output.innerHTML = state.value + " tax: "+tax 
     total_taxes_price_output.innerHTML = "Total with taxes: " + total_taxes_price
+    discount_percentage_output.innerHTML = "Discount: "+ discount
 })
