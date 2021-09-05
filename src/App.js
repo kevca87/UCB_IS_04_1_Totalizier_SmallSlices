@@ -11,6 +11,10 @@ const total_taxes_discount_output = document.querySelector("#show-total-taxes-di
 const state_tax_output = document.querySelector("#show-state");
 const discount_percentage_output = document.querySelector("#show-discount");
 
+
+// Requiring the lodash library  
+const _ = require("lodash");  
+
 var taxes = {
     "UT":0.0665,
     "NV":0.08,
@@ -58,10 +62,10 @@ form.addEventListener("submit",event=>{
     price_output.innerHTML = "Price: " + price.value
     let tax = taxes[state.value]
     let total_price =  price.value * quantity.value 
-    let total_taxes_price =  total_price * (1+tax)
-    let discount = calculate_discount(total_taxes_price)
+    let total_taxes_price =  _.round(total_price * (1+tax),2)
+    let discount = _.round(calculate_discount(total_taxes_price),2)
     total_price_output.innerHTML = "Total: " + total_price
-    state_tax_output.innerHTML = state.value + " tax: "+tax 
+    state_tax_output.innerHTML = state.value + " tax %: "+tax *100
     total_taxes_price_output.innerHTML = "Total with taxes: " + total_taxes_price
     discount_percentage_output.innerHTML = "Discount: "+ discount
     let total_taxes_discount_price = total_taxes_price - discount
