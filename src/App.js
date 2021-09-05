@@ -7,6 +7,7 @@ const quantity_output = document.querySelector("#show-quantity");
 const price_output = document.querySelector("#show-price");
 const total_price_output = document.querySelector("#show-total-price");
 const total_taxes_price_output = document.querySelector("#show-total-taxes-price");
+const total_taxes_discount_output = document.querySelector("#show-total-taxes-discount");
 const state_tax_output = document.querySelector("#show-state");
 const discount_percentage_output = document.querySelector("#show-discount");
 
@@ -62,4 +63,6 @@ form.addEventListener("submit",event=>{
     state_tax_output.innerHTML = state.value + " tax: "+tax 
     total_taxes_price_output.innerHTML = "Total with taxes: " + total_taxes_price
     discount_percentage_output.innerHTML = "Discount: "+ discount
+    let total_taxes_discount_price = total_taxes_price - discount
+    total_taxes_discount_output.innerHTML = "Total with taxes and discount: " + total_taxes_discount_price
 })
