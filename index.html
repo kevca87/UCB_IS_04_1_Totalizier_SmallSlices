@@ -1,24 +1,17 @@
 <html>
+  <head>
+
+  </head>
   <body>
-    <h1 id="greeting" style = "font-family:'Courier New', Courier, monospace">Hola</h1>
-    <form id="saludador-form">
+    <h1 id="title" style = "font-family:'Courier New', Courier, monospace">Sales totalizer</h1>
+    <form id="totalizer-form">
       <div>
-        <label for="nombre-input">Tu nombre: </label>
-        <input type="text" id="nombre-input"/>
+        <label for="quantity-input">Quantity:</label>
+        <input type="int" id="quantity-input" />
       </div><br>
-      <div>
-        <label for="edad-input">Edad: </label>
-        <input type="text" id="edad-input"/>
-      </div><br>
-      <div>
-        <label for="genero-input">Genero: </label>
-        <select name="cars" id="genero-input">
-          <option value="male">Masculino</option>
-          <option value="female">Femenino</option>
-        </select>
-      </div><br>
-      <input type="submit" value="Saludar"/>
+      <input type="submit" value="Confirm" />
     </form>
+    <p id="show-quantity"></p>
     <script src="./src/index.js"></script>
   </body>
 </html>
