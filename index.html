@@ -13,12 +13,22 @@
         <label for="price-input">Price:</label>
         <input type="int" id="price-input" />
       </div><br>
+      <div>
+        <select id="state">
+          <option value="UT">UT</option>
+          <option value="NV">NV</option>
+          <option value="TX">TX</option>
+          <option value="AL">AL</option>
+          <option value="CA">CA</option>
+        </select>
+      </div><br>
       <input type="submit" value="Confirm" />
     </form>
     <p id="show-quantity"></p>
     <p id="show-price"></p>
     <p id="show-total-price"></p>
     <p id="show-total-taxes-price"></p>
+    <p id="show-state"></p>
     <script src="./src/index.js"></script>
   </body>
 </html>
