@@ -53,6 +53,7 @@ function calculate_discount(total){
 
 form.addEventListener("submit",event=>{
     event.preventDefault()
+    alert("SALE WAS CONFIRMED")
     quantity_output.innerHTML = "Quantity: " + quantity.value
     price_output.innerHTML = "Price: " + price.value
     let tax = taxes[state.value]
